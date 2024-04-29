@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-29T18:23:58.064Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="oLXZiSkd3pkOX4z4tSpl" version="24.3.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-29T18:32:45.052Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="07k2CcdA31VavTI18XOS" version="24.3.1" type="github">
   <diagram name="Page-1" id="3VYbJmwqDZBETqcIFygg">
     <mxGraphModel dx="2074" dy="1190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -101,7 +101,7 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-14" value="If we think what should happen when the app loads:&lt;div&gt;1. First if this is the first time login then the auth module service should be invoked&lt;/div&gt;&lt;div&gt;2. Next we should be able to load all the groups the user is associated with and the group members&lt;/div&gt;&lt;div&gt;3. Images of the user and groups&lt;/div&gt;&lt;div&gt;4. We should also show the unread messages.&lt;/div&gt;&lt;div&gt;5. When clicked on group we should fetch all the historical messages in paginated fashion&lt;/div&gt;&lt;div&gt;6. We need to show the lastSeenAt time.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;To support the above features stateless http services can be created with below table structures:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-14" value="If we think what should happen when the app loads:&lt;div&gt;1. First if this is the first time login then the auth module service should be invoked&lt;/div&gt;&lt;div&gt;2. Next we should be able to load all the groups the user is associated with and the group members&lt;/div&gt;&lt;div&gt;3. API to fetch Images of the user and groups&lt;/div&gt;&lt;div&gt;4. API to fetch the unread messages and it&#39;s count&lt;/div&gt;&lt;div&gt;5. When clicked on group we should fetch all the historical messages in paginated fashion&lt;/div&gt;&lt;div&gt;6. API to show the lastSeenAt time.&lt;/div&gt;&lt;div&gt;7. One API to confirm message seenAt time in a group and 1:1 chat.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;To support the above features stateless http services can be created with below table structures:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="800" y="710" width="630" height="170" as="geometry" />
         </mxCell>
         <mxCell id="UpVBmO8LdcwkQg-ua9Jf-22" value="Group User Map" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
@@ -171,7 +171,7 @@
             <mxRectangle width="70" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-56" value="Group Message (sharded | Hbase)" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-56" value="Group Message (sharded by group_id | Hbase)" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
           <mxGeometry x="720" y="960" width="420" height="70" as="geometry" />
         </mxCell>
         <mxCell id="UpVBmO8LdcwkQg-ua9Jf-57" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-56">
@@ -218,27 +218,27 @@
             <mxRectangle width="82" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-73" value="user_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-73" value="msg_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
           <mxGeometry x="82" width="82" height="40" as="geometry">
             <mxRectangle width="82" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-74" value="group name" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-74" value="seenAt" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
           <mxGeometry x="164" width="76" height="40" as="geometry">
             <mxRectangle width="76" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-75" value="lastActiveTime" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-75" value="user_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
           <mxGeometry x="240" width="88" height="40" as="geometry">
             <mxRectangle width="88" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-76" value="group_img" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-76" value="deliveredAt" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
           <mxGeometry x="328" width="82" height="40" as="geometry">
             <mxRectangle width="82" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-77" value="desc" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-95" value="id:uuid" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-71">
           <mxGeometry x="410" width="82" height="40" as="geometry">
             <mxRectangle width="82" height="40" as="alternateBounds" />
           </mxGeometry>
@@ -277,6 +277,42 @@
         <mxCell id="UpVBmO8LdcwkQg-ua9Jf-86" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-80">
           <mxGeometry x="350" width="70" height="40" as="geometry">
             <mxRectangle width="70" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-87" value="Unread mention count for group" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1050" width="492" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-88" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-87">
+          <mxGeometry y="30" width="492" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-89" value="gid" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-88">
+          <mxGeometry width="82" height="40" as="geometry">
+            <mxRectangle width="82" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-90" value="mention count" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-88">
+          <mxGeometry x="82" width="82" height="40" as="geometry">
+            <mxRectangle width="82" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-91" value="user_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-88">
+          <mxGeometry x="164" width="76" height="40" as="geometry">
+            <mxRectangle width="76" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-92" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-88">
+          <mxGeometry x="240" width="88" height="40" as="geometry">
+            <mxRectangle width="88" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-93" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-88">
+          <mxGeometry x="328" width="82" height="40" as="geometry">
+            <mxRectangle width="82" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-94" value="id:uuid" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="UpVBmO8LdcwkQg-ua9Jf-88">
+          <mxGeometry x="410" width="82" height="40" as="geometry">
+            <mxRectangle width="82" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
       </root>
