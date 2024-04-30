@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-30T04:23:22.132Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="Iw7fwGnAUYjF1dAr5zy-" version="24.3.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-30T04:25:00.596Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="zrED1RcTBbOdo6U9R4EW" version="24.3.1" type="github">
   <diagram name="Page-1" id="3VYbJmwqDZBETqcIFygg">
-    <mxGraphModel dx="2413" dy="1190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1586" dy="1190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -14,16 +14,16 @@
           <mxGeometry x="40" y="548" width="200" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HWvaaGP3WwTQ4oXDmzbK-7" value="Load Balancer" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.application_load_balancer;fillColor=#F58536;gradientColor=none;" parent="1" vertex="1">
-          <mxGeometry x="111" y="740" width="69" height="72" as="geometry" />
+          <mxGeometry x="155.5" y="740" width="69" height="72" as="geometry" />
         </mxCell>
         <mxCell id="HWvaaGP3WwTQ4oXDmzbK-11" value="KV store (Base)" style="image;html=1;image=img/lib/clip_art/computers/Database_128x128.png" parent="1" vertex="1">
-          <mxGeometry x="555" y="1010" width="80" height="80" as="geometry" />
+          <mxGeometry x="505" y="1030" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HWvaaGP3WwTQ4oXDmzbK-12" value="App Servers&lt;div&gt;All stateless Service&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="85.5" y="900" width="120" height="60" as="geometry" />
+          <mxGeometry x="130" y="905" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="HWvaaGP3WwTQ4oXDmzbK-16" value="Meta Data storage" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.rds_postgresql_instance;" parent="1" vertex="1">
-          <mxGeometry x="-190" y="891" width="78" height="78" as="geometry" />
+          <mxGeometry x="10" y="896" width="78" height="78" as="geometry" />
         </mxCell>
         <mxCell id="y-Os3jITyolEBnI4brBV-3" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;How do we establish real time messaging&lt;/font&gt; - We have multiple ways to do it like long polling, short polling and web sockets. However because polling could result it querying for data even when there is no message, it could become expensive option and not a good way of implementing real time communication.&amp;nbsp;&lt;div&gt;Websockets being a persistent bidirectional full duplex connection seems to be an ideal choice.However one challenge with web sockets is that since it&#39;s a stateful connection we would need to maintain the mapping of client and server to transmit the message to the desired party.&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="780" y="30" width="620" height="120" as="geometry" />
@@ -290,34 +290,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="UpVBmO8LdcwkQg-ua9Jf-96" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Statefull Service: web sockets&lt;/font&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;W&lt;/font&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;e need to use the web socket real time protocol to deliver the messages instantly to the recipient. However let&#39;s discuss the challenges:&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;1. Websocket being persistent and stateful there needs to be a service which should tell which client is connected to which WS server in a distributed environment. To achieve this we can use Apache Zookeeper services to register all the servers support web sockets and also maintain all the open connections by userid to propagate messages as soon as we receive.&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;2. Ideally we should introduce a messaging layer to store the messages from sender as because the client might not have an active connection and we might need to hold the message for sometime or perform retry in failure scenarios.&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;3. As soon as we receive a message we can put it to a Kafka Topic.&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;4. The consumer from Kafka Topic can use the same zookeeper service to find the recipient&#39;s websocket server and send the message if connection is alive. Accordingly it can update few columns like delivered At and also storing the message in Hbase with all the column details.&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;5. Simultaneously it should also invoke the push notification flow via appropriate Apple Push notification server or Firebase Cloud messaging service to deliver the notifications to the mobile device.Alternatively a browser notification service also needs to be developed.&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;6.If the message cannot be delivered as mentioned n point 4 the message is safe in Hbase storage and once the client creates the connection then it will use the stateless service to load the message history which can also calculate the number of unread message count based on the lastSeen time which can be cached at the device.&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="780" y="900" width="752" height="270" as="geometry" />
-        </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-97" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Final Diagram&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="60" y="1190" width="590" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-100" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="280" y="1260" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-101" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="UpVBmO8LdcwkQg-ua9Jf-100" vertex="1">
-          <mxGeometry width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-102" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.mobile_client;fillColor=#D2D3D3;gradientColor=none;" parent="UpVBmO8LdcwkQg-ua9Jf-100" vertex="1">
-          <mxGeometry x="75" y="10" width="30" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-103" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.laptop;pointerEvents=1;" parent="UpVBmO8LdcwkQg-ua9Jf-100" vertex="1">
-          <mxGeometry x="10.5" y="15" width="50" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="UpVBmO8LdcwkQg-ua9Jf-104" value="Load Balancer" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.application_load_balancer;fillColor=#F58536;gradientColor=none;" parent="1" vertex="1">
-          <mxGeometry x="180" y="1410" width="69" height="72" as="geometry" />
-        </mxCell>
-        <mxCell id="DUIvn3B8q1NnEX_885ca-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="144.5" y="1610" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="DUIvn3B8q1NnEX_885ca-2" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="440" y="1400" width="120" height="60" as="geometry" />
+          <mxGeometry x="780" y="896" width="752" height="270" as="geometry" />
         </mxCell>
         <mxCell id="DUIvn3B8q1NnEX_885ca-3" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="430" y="740" width="330" height="210" as="geometry" />
+          <mxGeometry x="380" y="750" width="330" height="210" as="geometry" />
         </mxCell>
         <mxCell id="UpVBmO8LdcwkQg-ua9Jf-8" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="DUIvn3B8q1NnEX_885ca-3" vertex="1">
           <mxGeometry width="330" height="210" as="geometry" />
@@ -351,7 +327,7 @@
           <mxGeometry x="50" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="DUIvn3B8q1NnEX_885ca-13" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="30" y="1030" width="250" height="60" as="geometry" />
+          <mxGeometry x="74" y="1030" width="250" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DUIvn3B8q1NnEX_885ca-4" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="DUIvn3B8q1NnEX_885ca-13">
           <mxGeometry width="250" height="60" as="geometry" />
@@ -369,7 +345,7 @@
           <mxGeometry x="120" y="15" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="DUIvn3B8q1NnEX_885ca-14" value="Apache ZooKeeper" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="1100" width="60" height="30" as="geometry" />
+          <mxGeometry x="165" y="1100" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="DUIvn3B8q1NnEX_885ca-15" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.464;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="HWvaaGP3WwTQ4oXDmzbK-12" target="DUIvn3B8q1NnEX_885ca-4">
           <mxGeometry width="80" relative="1" as="geometry">
