@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-05-04T19:01:26.772Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="8nGwGP0M23y3miXIMyIC" version="24.3.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-05-04T19:02:04.985Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="96MBrOTVG6RTWCmPNmgQ" version="24.3.1" type="github">
   <diagram name="Page-1" id="5rw8_xuSiJQBggX3PjnT">
     <mxGraphModel dx="1586" dy="1190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -126,17 +126,19 @@
         <mxCell id="YMMeXwshyKwuWub0eHVM-34" value="Unique Id time = Current epoch - Epoch Start Time&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;As this is going to be numeric and increasing with time this fulfils all our requirements and this would be sortable and of size 64 bits. To support the through put we can have a load balancer and may be 5 systems with 4 core each.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Calculation : Id generations takes 5MS. Thus in each second we would be generating 200ids using one core. Thus total core needed:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;10k / 200 = 20 cores = 5 machines of 4 core each.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Implemention approach : Zookeeper vs PostGresSQL multiple schema.&lt;/div&gt;&lt;div&gt;Instagram built a similar id generation service using the above core idea. However unlike Twitter they didn&#39;t use Apache zookeepr to keep track of the DC id and Machine/Process ID. Instagram had merged bits for DC and machine and used 13 bits to create the logical partitions which mapped to few physical machines. They achieved this using Postgres schema where let&#39;s say if a userid hashed into partition number 10 then a range of hash ids will be mapped to a schema(let&#39;s say it&#39;s insta5).&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="50" y="1060" width="720" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="YMMeXwshyKwuWub0eHVM-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YMMeXwshyKwuWub0eHVM-35" target="YMMeXwshyKwuWub0eHVM-38">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="YMMeXwshyKwuWub0eHVM-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="YMMeXwshyKwuWub0eHVM-38">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1165" y="405" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-35" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="940" y="270" width="120" height="60" as="geometry" />
+          <mxGeometry x="1105" y="340" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-36" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.smartphone;" vertex="1" parent="1">
-          <mxGeometry x="960" y="285" width="18" height="30" as="geometry" />
+          <mxGeometry x="1125" y="360" width="18" height="30" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-37" value="" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#00188D;shape=mxgraph.azure.laptop" vertex="1" parent="1">
-          <mxGeometry x="1000" y="285" width="50" height="30" as="geometry" />
+          <mxGeometry x="1165" y="360" width="50" height="30" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YMMeXwshyKwuWub0eHVM-38" target="YMMeXwshyKwuWub0eHVM-40">
           <mxGeometry relative="1" as="geometry" />
@@ -145,40 +147,44 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-38" value="LB" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="940" y="420" width="120" height="60" as="geometry" />
+          <mxGeometry x="1105" y="495" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="YMMeXwshyKwuWub0eHVM-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YMMeXwshyKwuWub0eHVM-40" target="YMMeXwshyKwuWub0eHVM-45">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="YMMeXwshyKwuWub0eHVM-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YMMeXwshyKwuWub0eHVM-40">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1165" y="775" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-40" value="Web server 1" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="850" y="560" width="120" height="60" as="geometry" />
+          <mxGeometry x="1015" y="635" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="YMMeXwshyKwuWub0eHVM-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="YMMeXwshyKwuWub0eHVM-42" target="YMMeXwshyKwuWub0eHVM-45">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="YMMeXwshyKwuWub0eHVM-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="YMMeXwshyKwuWub0eHVM-42">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1165" y="775" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-42" value="Web Server 2" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1030" y="560" width="120" height="60" as="geometry" />
+          <mxGeometry x="1195" y="635" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-44" value="&lt;pre style=&quot;text-align: start; box-sizing: inherit; margin-top: 56px; margin-bottom: 0px; border: medium; color: rgb(36, 36, 36); overflow-x: auto; font-family: source-code-pro, Menlo, Monaco, &amp;quot;Courier New&amp;quot;, Courier, monospace; padding: 20px; border-radius: 0px; background: rgb(242, 242, 242);&quot; class=&quot;pg ph pi pj pk pl pm pn po ax pp bj&quot;&gt;&lt;span style=&quot;box-sizing: inherit; display: block; font-size: 16px; white-space: pre-wrap; letter-spacing: -0.022em; line-height: 1.18; margin-top: -0.09em; margin-bottom: -0.09em; min-width: fit-content;&quot; data-selectable-paragraph=&quot;&quot; class=&quot;oo nm fr pm b hq pq pr l ig ps&quot; id=&quot;fc17&quot;&gt;CREATE OR REPLACE FUNCTION insta5.next_id(OUT result bigint) AS $$&lt;br style=&quot;box-sizing: inherit;&quot;&gt;DECLARE&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    our_epoch bigint := 1314220021721;&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    seq_id bigint;&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    now_millis bigint;&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    shard_id int := 5;&lt;br style=&quot;box-sizing: inherit;&quot;&gt;BEGIN&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    SELECT nextval(&#39;insta5.table_id_seq&#39;) %% 1024 INTO seq_id;&lt;/span&gt;&lt;span style=&quot;box-sizing: inherit; display: block; font-size: 16px; white-space: pre-wrap; letter-spacing: -0.022em; line-height: 1.18; margin-bottom: -0.09em; min-width: fit-content; margin-top: 0.91em;&quot; data-selectable-paragraph=&quot;&quot; class=&quot;oo nm fr pm b hq pt pr l ig ps&quot; id=&quot;9622&quot;&gt;    SELECT FLOOR(EXTRACT(EPOCH FROM clock_timestamp()) * 1000) INTO now_millis;&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    result := (now_millis - our_epoch) &amp;lt;&amp;lt; 23;&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    result := result | (shard_id &amp;lt;&amp;lt;10);&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    result := result | (seq_id);&lt;br style=&quot;box-sizing: inherit;&quot;&gt;END;&lt;br style=&quot;box-sizing: inherit;&quot;&gt;    $$ LANGUAGE PLPGSQL;&lt;/span&gt;&lt;/pre&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="840" y="1010" width="710" height="360" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-45" value="" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="780" y="700" width="450" height="60" as="geometry" />
+          <mxGeometry x="940" y="770" width="450" height="90" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-48" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Azure_Database_for_PostgreSQL_servers.svg;" vertex="1" parent="1">
-          <mxGeometry x="812" y="705" width="38" height="50" as="geometry" />
+          <mxGeometry x="977" y="780" width="38" height="50" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-49" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Azure_Database_for_PostgreSQL_servers.svg;" vertex="1" parent="1">
-          <mxGeometry x="890" y="705" width="38" height="50" as="geometry" />
+          <mxGeometry x="1055" y="780" width="38" height="50" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-51" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Azure_Database_for_PostgreSQL_servers.svg;" vertex="1" parent="1">
-          <mxGeometry x="950" y="705" width="38" height="50" as="geometry" />
+          <mxGeometry x="1115" y="780" width="38" height="50" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-53" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Azure_Database_for_PostgreSQL_servers.svg;" vertex="1" parent="1">
-          <mxGeometry x="1166" y="705" width="38" height="50" as="geometry" />
+          <mxGeometry x="1331" y="780" width="38" height="50" as="geometry" />
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-55" value="PostgresSchemas" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="715" width="140" height="30" as="geometry" />
+          <mxGeometry x="1165" y="790" width="140" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
