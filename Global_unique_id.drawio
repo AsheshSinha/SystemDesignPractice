@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-05-04T17:34:24.198Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="BnDSBBmTdCfl4crJgmA1" version="24.3.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-05-04T17:42:06.830Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="vN496bjWOXXWHPNgw8sT" version="24.3.1" type="github">
   <diagram name="Page-1" id="5rw8_xuSiJQBggX3PjnT">
     <mxGraphModel dx="1586" dy="1190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -18,6 +18,78 @@
         </mxCell>
         <mxCell id="YMMeXwshyKwuWub0eHVM-6" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;Deep Dive&lt;/b&gt;&lt;/font&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="45" y="490" width="625" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-8" value="We probably wouldn&#39;t need DB tables for this solution. Thus not discussing table structure, are you fine with this approach?&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Capacity Planning:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;We can estimate the capacity based on the use cases. Twitter at present generates 6000 tweets per second which is a good standard, in that point of view designing the system to support 10k ids/ sec seems to be a good choice. Let&#39;s first understand how one id would be generated.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;We can break the 64 bits in the below format:&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="530" width="590" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-9" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
+          <mxGeometry x="45" y="680" width="726" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-16" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-9">
+          <mxGeometry width="726" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-22" value="Category" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-16">
+          <mxGeometry width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-17" value="Signed Bit&amp;nbsp;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-16">
+          <mxGeometry x="121" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-18" value="Timestamp Bit" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-16">
+          <mxGeometry x="242" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-19" value="DC Id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-16">
+          <mxGeometry x="363" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-20" value="Machine ID" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-16">
+          <mxGeometry x="484" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-21" value="Sequence Number" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-16">
+          <mxGeometry x="605" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-10" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-9">
+          <mxGeometry y="40" width="726" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-23" value="Length(in bits)" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-10">
+          <mxGeometry width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-11" value="1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-10">
+          <mxGeometry x="121" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-12" value="41" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-10">
+          <mxGeometry x="242" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-13" value="5" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-10">
+          <mxGeometry x="363" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-14" value="7" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-10">
+          <mxGeometry x="484" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YMMeXwshyKwuWub0eHVM-15" value="10" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="YMMeXwshyKwuWub0eHVM-10">
+          <mxGeometry x="605" width="121" height="40" as="geometry">
+            <mxRectangle width="121" height="40" as="alternateBounds" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
