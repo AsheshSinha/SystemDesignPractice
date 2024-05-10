@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-05-10T03:44:55.041Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="PhuT_41Y1eSwNX4CKLF2" version="24.3.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-05-10T03:46:32.478Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15" etag="sMQmfM8A1yZXgvcPcKD0" version="24.3.1" type="github">
   <diagram name="Page-1" id="OIAHOW4MRP7iXSUrzqny">
     <mxGraphModel dx="1586" dy="1190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -74,7 +74,31 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="-V9aV1jQh0ncLkKRMfFz-1" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Non Functional requirements:&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;1. The system must be highly available and reliable (durability)&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;2. Also since the read/write volume can grow with time it should be high scalable as well&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;3. There should be rate limiting applied on the APIs as the read only api can be used for DOS attacks.&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="880" y="110" width="690" height="190" as="geometry" />
+          <mxGeometry x="880" y="110" width="690" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="-V9aV1jQh0ncLkKRMfFz-2" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Schema Design&lt;/font&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="880" y="250" width="630" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-V9aV1jQh0ncLkKRMfFz-3" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
+          <mxGeometry x="880" y="300" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-V9aV1jQh0ncLkKRMfFz-4" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="-V9aV1jQh0ncLkKRMfFz-3">
+          <mxGeometry width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-V9aV1jQh0ncLkKRMfFz-5" value="id(PK)" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="-V9aV1jQh0ncLkKRMfFz-4">
+          <mxGeometry width="50" height="40" as="geometry">
+            <mxRectangle width="50" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V9aV1jQh0ncLkKRMfFz-6" value="ShortUrl" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="-V9aV1jQh0ncLkKRMfFz-4">
+          <mxGeometry x="50" width="70" height="40" as="geometry">
+            <mxRectangle width="70" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V9aV1jQh0ncLkKRMfFz-7" value="LongUrl" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="-V9aV1jQh0ncLkKRMfFz-4">
+          <mxGeometry x="120" width="60" height="40" as="geometry">
+            <mxRectangle width="60" height="40" as="alternateBounds" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
